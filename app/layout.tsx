@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 import { cn } from '@/app/lib/utils';
 import { Header } from '@/app/ui/header';
 import { inter } from '@/app/ui/fonts';
+import { Footer } from './ui/footer';
 
 export const metadata: Metadata = {
   title: 'Andromeda Customs',
@@ -19,7 +20,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={cn(inter.className, 'min-h-full font-sans antialiased')}>
         <Header />
-        {children}
+        <div className="h-[calc(100vh_-_112px)] lg:h-[calc(100vh_-_136px)]">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );

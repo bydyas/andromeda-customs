@@ -19,7 +19,7 @@ import {
 } from '@/app/ui/navigation-menu';
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar';
 import { cn } from '@/app/lib/utils';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const links = [
   {
@@ -56,6 +56,15 @@ const isAuth = false; // should be replaced with the real check-in
 export function Header() {
   const [isMobileNavigationMenuOpen, setIsMobileNavigationMenuOpen] =
     useState<boolean>(false);
+
+  useEffect(() => {
+    if (isMobileNavigationMenuOpen) {
+      window.scrollTo(0, 0);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [isMobileNavigationMenuOpen]);
 
   const toggleMobileMenu = () => setIsMobileNavigationMenuOpen((prev) => !prev);
 
