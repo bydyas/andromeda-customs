@@ -177,7 +177,7 @@ export function Header() {
         <Grip
           className={cn(
             'flex cursor-pointer transition-all lg:hidden',
-            isMobileNavigationMenuOpen && 'rotate-45 text-yellow-500',
+            isMobileNavigationMenuOpen && 'rotate-45 text-slate-200',
           )}
           onClick={toggleMobileMenu}
         />

@@ -36,7 +36,7 @@ const links = [
     href: '/privacy',
   },
   {
-    title: `Andromeda Customers ©${new Date().getFullYear()}`,
+    title: `Andromeda Customs ©${new Date().getFullYear()}`,
     href: '/privacy',
   },
 ];

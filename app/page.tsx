@@ -1,3 +1,9 @@
+import { Steps } from './ui/steps';
+
 export default function Home() {
-  return <main></main>;
+  return (
+    <main>
+      <Steps />
+    </main>
+  );
 }
