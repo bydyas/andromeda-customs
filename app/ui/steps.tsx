@@ -11,6 +11,8 @@ import Link from 'next/link';
 import { Rocket, Truck, CreditCard, PaintBucket } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { AppRoute } from '../lib/enums';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState } from 'react';
 
 const links = [
   {
@@ -36,8 +38,30 @@ const links = [
 ];
 
 export function Steps() {
-  // TODO: replace with the real one from store;
-  const currentStep = 1;
+  const pathname = usePathname();
+  const [currentStep, setCurrentStep] = useState<number>(1);
+
+  useEffect(() => {
+    if (pathname) {
+      switch (pathname) {
+        case AppRoute.NewProject:
+          setCurrentStep(1);
+          break;
+        case AppRoute.Customize:
+          setCurrentStep(2);
+          break;
+        case AppRoute.Ship:
+          setCurrentStep(3);
+          break;
+        case AppRoute.Pay:
+          setCurrentStep(4);
+          break;
+        default:
+          setCurrentStep(1);
+          break;
+      }
+    }
+  }, [pathname]);
 
   return (
     <div className="container relative py-2 md:py-4 lg:max-w-screen-lg lg:py-8 xl:max-w-screen-xl 2xl:max-w-screen-2xl">
