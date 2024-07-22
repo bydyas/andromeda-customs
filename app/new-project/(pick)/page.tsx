@@ -83,7 +83,8 @@ export default function Page() {
         href={`${AppRoute.Customize}?ship=${selectedModel.dir}`}
         aria-disabled={!selectedModel}
         className={cn(
-          'hover:text-foreground/80 text-foreground/60 my-4 rounded-sm px-4 py-2 text-xl uppercase transition-colors hover:bg-slate-100',
+          'hover:text-foreground/80 text-foreground/60 my-4 rounded-sm px-4 py-2 text-xl uppercase transition-colors hover:bg-slate-100 hover:text-slate-500',
+          selectedModel && 'bg-yellow-500 text-slate-100',
           !selectedModel && 'pointer-events-none opacity-50',
         )}
       >

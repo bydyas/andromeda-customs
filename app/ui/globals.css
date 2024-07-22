@@ -6,6 +6,18 @@
   .animate-pause {
     animation-play-state: paused;
   }
+  .custom-scroll::-webkit-scrollbar {
+    width: 10px;
+  }
+  .custom-scroll::-webkit-scrollbar-track {
+    @apply bg-slate-50;
+  }
+  .custom-scroll::-webkit-scrollbar-thumb {
+    @apply bg-slate-200;
+  }
+  .custom-scroll::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-500;
+  }  
   .fix-scroll {
     overflow-y: hidden!important;
   }

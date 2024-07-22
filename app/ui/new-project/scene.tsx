@@ -6,9 +6,9 @@ import ShipModel from './ship-model';
 
 export default function Scene({ modelDir }: { modelDir: string }) {
   return (
-    <div className="flex h-[calc(100vh_-_104px_-_64px)] items-center justify-center">
+    <div className="flex h-[calc(100vh_-_104px_-_170px)] items-center justify-center">
       <Canvas
-        className="h-2xl w-2xl"
+        className="h-2xl w-[100%]"
         camera={{ fov: 75, near: 0.1, far: 50, position: [5, 3, 7] }}
       >
         <OrbitControls enablePan={false} />

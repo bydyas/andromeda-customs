@@ -3,7 +3,14 @@
 import { useEffect } from 'react';
 import Scene from '@/app/ui/new-project/scene';
 import { redirect, useSearchParams } from 'next/navigation';
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from '@/app/ui/resizable';
+
 import { AppRoute } from '@/app/lib/enums';
+import ModPanel from '@/app/ui/new-project/mod-panel';
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -22,7 +29,15 @@ export default function Page() {
 
   return (
     <section>
-      <Scene modelDir={shipDir} />
+      <ResizablePanelGroup direction="horizontal">
+        <ResizablePanel defaultSize={75} minSize={50}>
+          <Scene modelDir={shipDir} />
+        </ResizablePanel>
+        <ResizableHandle withHandle />
+        <ResizablePanel minSize={25}>
+          <ModPanel />
+        </ResizablePanel>
+      </ResizablePanelGroup>
     </section>
   );
 }
