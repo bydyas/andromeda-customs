@@ -13,40 +13,50 @@ import Link from 'next/link';
 import { AppRoute } from '@/app/lib/enums';
 import { useState } from 'react';
 import { cn } from '@/app/lib/utils';
+import { IShip } from '@/app/lib/definitions';
 
 // TODO: fetch the real data from DB;
-const modelsData = [
+const modelsData: IShip[] = [
   {
+    id: 1,
     title: 'Star Wing',
     description: 'Alpha-class Xg-1',
     imgUrl: '/images/star_wing.jpg',
+    dir: 'star_wars_alpha-class_xg-1_star_wing',
   },
   {
+    id: 2,
     title: 'Moon Tail',
     description: 'Omega-class Au-02',
     imgUrl: '/images/star_wing.jpg',
+    dir: 'star_wars_alpha-class_xg-1_star_wing',
   },
   {
+    id: 3,
     title: 'Destroyer',
     description: 'Beta-class Zn-41',
     imgUrl: '/images/star_wing.jpg',
+    dir: 'star_wars_alpha-class_xg-1_star_wing',
   },
 ];
 
 export default function Page() {
-  const [selectedModel, setSelectedModel] = useState<string>('');
+  const [selectedModel, setSelectedModel] = useState<IShip>({} as IShip);
 
   return (
     <section className="layer flex h-full flex-col items-center justify-center overflow-hidden">
       <ul className="flex h-full max-h-[calc(((407px_+_24px)_*_3)_-_200px)] flex-col items-center gap-6 overflow-y-auto overflow-x-hidden py-[29px] md:max-h-full md:flex-row md:py-0">
-        {modelsData.map((v, i) => (
-          <li key={i} className="h-[407px] w-full cursor-pointer md:w-[297px]">
+        {modelsData.map((v) => (
+          <li
+            key={v.id}
+            className="h-[407px] w-full cursor-pointer md:w-[297px]"
+          >
             <Card
               className={cn(
                 'rounded-sm hover:bg-slate-100',
-                selectedModel === v.title && 'bg-slate-100',
+                selectedModel.id === v.id && 'bg-slate-100',
               )}
-              onClick={() => setSelectedModel(v.title)}
+              onClick={() => setSelectedModel(v)}
             >
               <CardContent>
                 <Image
@@ -70,7 +80,7 @@ export default function Page() {
         ))}
       </ul>
       <Link
-        href={AppRoute.Customize}
+        href={`${AppRoute.Customize}?ship=${selectedModel.dir}`}
         aria-disabled={!selectedModel}
         className={cn(
           'hover:text-foreground/80 text-foreground/60 my-4 rounded-sm px-4 py-2 text-xl uppercase transition-colors hover:bg-slate-100',
