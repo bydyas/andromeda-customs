@@ -10,32 +10,34 @@ import {
 import Link from 'next/link';
 import { Rocket, Truck, CreditCard, PaintBucket } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { AppRoute } from '../lib/enums';
 
 const links = [
   {
     title: 'Pick',
     icon: <Rocket />,
-    href: '/',
+    href: AppRoute.NewProject,
   },
   {
     title: 'Customize',
     icon: <PaintBucket />,
-    href: '/customize',
+    href: AppRoute.Customize,
   },
   {
     title: 'Ship',
     icon: <Truck />,
-    href: '/ship',
+    href: AppRoute.Ship,
   },
   {
     title: 'Pay',
     icon: <CreditCard />,
-    href: '/pay',
+    href: AppRoute.Pay,
   },
 ];
 
 export function Steps() {
-  const currentStep = 1; // should be replaced with the real one from store
+  // TODO: replace with the real one from store;
+  const currentStep = 1;
 
   return (
     <div className="container relative py-2 md:py-4 lg:max-w-screen-lg lg:py-8 xl:max-w-screen-xl 2xl:max-w-screen-2xl">

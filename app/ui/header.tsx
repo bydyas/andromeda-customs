@@ -20,19 +20,20 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/ui/avatar';
 import { cn } from '@/app/lib/utils';
 import { useEffect, useState } from 'react';
+import { AppRoute } from '../lib/enums';
 
 const links = [
   {
     title: 'new project',
-    href: '/',
+    href: AppRoute.NewProject,
   },
   {
     title: 'share project',
-    href: '/share-project',
+    href: AppRoute.ShareProject,
   },
   {
     title: 'faq',
-    href: '/faq',
+    href: AppRoute.FAQ,
   },
 ];
 
@@ -51,7 +52,8 @@ const socialNetworks = [
   },
 ];
 
-const isAuth = false; // should be replaced with the real check-in
+// TODO: replace with the real check-in;
+const isAuth = false;
 
 export function Header() {
   const [isMobileNavigationMenuOpen, setIsMobileNavigationMenuOpen] =
@@ -94,7 +96,7 @@ export function Header() {
             ))}
             <NavigationMenuItem>
               <Link
-                href={isAuth ? '/profile' : '/login'}
+                href={isAuth ? AppRoute.Profile : AppRoute.Login}
                 legacyBehavior
                 passHref
               >
@@ -123,7 +125,7 @@ export function Header() {
         </NavigationMenu>
       </div>
 
-      <header className="border-border/40 container relative z-50 flex h-16 items-center justify-between rounded-sm border-b bg-white lg:mt-4 lg:max-w-screen-lg lg:border xl:max-w-screen-xl 2xl:max-w-screen-2xl">
+      <header className="border-border/40 layer relative z-50 flex h-16 items-center justify-between rounded-sm border-b bg-white lg:mt-4 lg:border">
         <Link href={'/'} className="group relative flex items-center gap-2">
           <Sparkles className="absolute bottom-0 left-0.5 transition-colors group-hover:text-yellow-500" />
           <span className={cn(star_jedi.className, 'text-right')}>

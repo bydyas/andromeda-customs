@@ -43,7 +43,7 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="border-border/40 container rounded-sm border-t bg-white pb-1 pt-1 lg:mb-2 lg:h-12 lg:max-w-screen-lg lg:border lg:pb-0 lg:pt-0 xl:max-w-screen-xl 2xl:max-w-screen-2xl">
+    <footer className="border-border/40 layer rounded-sm border-t bg-white pb-1 pt-1 lg:mb-2 lg:h-12 lg:border lg:pb-0 lg:pt-0">
       <NavigationMenu className="h-full max-w-full">
         <NavigationMenuList className="flex-wrap items-center justify-center lg:flex-nowrap">
           {links.map((link, idx) => (
