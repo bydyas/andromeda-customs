@@ -1,5 +1,6 @@
 import { shipDetails as details } from '@/app/lib/placeholder-data';
 import Stats from './stats';
+import CustomProject from './custom-project';
 
 export default function ModPanel() {
   return (
@@ -60,9 +61,7 @@ export default function ModPanel() {
         </li>
       </ul>
 
-      <button className="h-14 w-full cursor-pointer rounded-sm bg-slate-200 px-6 hover:bg-slate-100 active:bg-slate-50">
-        <span className="text-2xl font-medium uppercase">Custom Project</span>
-      </button>
+      <CustomProject />
 
       <ul className="mt-6 [&>li]:text-justify">
         <li>

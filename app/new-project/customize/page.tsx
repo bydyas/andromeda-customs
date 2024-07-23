@@ -14,7 +14,7 @@ import ModPanel from '@/app/ui/new-project/mod-panel';
 
 export default function Page() {
   const searchParams = useSearchParams();
-  const shipDir = searchParams.get('ship');
+  const shipModelDirName = searchParams.get('ship');
 
   useEffect(() => {
     document.body.classList.add('fix-scroll');
@@ -23,7 +23,7 @@ export default function Page() {
     };
   }, []);
 
-  if (!shipDir) {
+  if (!shipModelDirName) {
     redirect(AppRoute.NewProject);
   }
 
@@ -31,10 +31,10 @@ export default function Page() {
     <section>
       <ResizablePanelGroup direction="horizontal">
         <ResizablePanel defaultSize={75} minSize={50}>
-          <Scene modelDir={shipDir} />
+          <Scene modelDirName={shipModelDirName} />
         </ResizablePanel>
         <ResizableHandle withHandle />
-        <ResizablePanel minSize={25}>
+        <ResizablePanel defaultSize={25} minSize={25}>
           <ModPanel />
         </ResizablePanel>
       </ResizablePanelGroup>

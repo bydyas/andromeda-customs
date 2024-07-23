@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-navigation-menu": "^1.1.4",
     "@react-three/drei": "^9.108.4",
     "@react-three/fiber": "^8.16.8",
@@ -23,7 +24,8 @@
     "react-resizable-panels": "^2.0.22",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.166.1"
+    "three": "^0.166.1",
+    "vaul": "^0.9.1"
   },
   "devDependencies": {
     "@types/node": "^20",

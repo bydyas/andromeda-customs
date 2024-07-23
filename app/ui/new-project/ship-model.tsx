@@ -1,24 +1,30 @@
 'use client';
 
-import { useRef } from 'react';
-import { useLoader } from '@react-three/fiber';
-// @ts-ignore
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { Mesh } from 'three';
+import { Suspense, useEffect } from 'react';
+import { useLoader, useThree } from '@react-three/fiber';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 interface IShipModel {
-  dir: string;
-  type?: 'gltf' | 'glb';
+  dirName: string;
 }
 
-export default function ShipModel({ dir, type = 'gltf' }: IShipModel) {
-  const fileUrl = `/models/${dir}/scene.${type}`;
-  const mesh = useRef<Mesh>(null!);
-  const gltf = useLoader(GLTFLoader, fileUrl);
+export default function ShipModel({ dirName }: IShipModel) {
+  const fullPathname = `/models/${dirName}/scene.gltf`;
+  const ship = useLoader(GLTFLoader, fullPathname);
+  const scene = useThree((state) => state.scene);
+
+  useEffect(() => {
+    scene.traverse((object) => {
+      if (object.name === 'UpperCanon') {
+        console.log(object);
+        object.visible = false;
+      }
+    });
+  }, [scene]);
 
   return (
-    <mesh ref={mesh}>
-      <primitive object={gltf.scene} />
-    </mesh>
+    <Suspense fallback={null}>
+      <primitive object={ship.scene} />;
+    </Suspense>
   );
 }
